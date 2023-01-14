@@ -15,7 +15,7 @@
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
 	"forwardPorts": [80],
 	// Uncomment the next line to run commands after the container is created.
-	"postCreateCommand": "cd app ; uvicorn main:app --host 0.0.0.0 --port 80",
+	"postCreateCommand": "git config --global user.email 'quentin.alais@hotmail.fr';git config --global user.name 'quentinalais' ;cd app ; uvicorn main:app --host 0.0.0.0 --port 80 --reload",
 
 	// Configure tool-specific properties.
 	// "customizations": {},
