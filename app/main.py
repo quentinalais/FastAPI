@@ -13,7 +13,7 @@ def read_root():
 
 @app.get("/greeting")
 def read_root():
-    return "Bonjour"
+    return "Hola Buenos Dias"
 
 
 @app.get("/items/{item_id}")
