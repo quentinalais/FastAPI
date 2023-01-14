@@ -8,13 +8,7 @@
 		// Update the 'dockerFile' property if you aren't using the standard 'Dockerfile' filename.
 		"dockerfile": "../Dockerfile"
 	},
-	"mounts": [
-        "source=/run/host-services/ssh-auth.sock,target=/run/host-services/ssh-auth.sock,type=bind,consistency=cached"
-    ],
-    "containerEnv": {
-        "SSH_AUTH_SOCK": "/run/host-services/ssh-auth.sock"
-    },
-
+	"initializeCommand": "find ~/.ssh/ -type f -exec grep -l 'PRIVATE' {} \\; | xargs ssh-add",
 	// Features to add to the dev container. More info: https://containers.dev/features.
 	// "features": {},
 
