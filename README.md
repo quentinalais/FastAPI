@@ -1,7 +1,12 @@
-# FastAPI with Dev Container 
+# FastAPI with Dev Container
 
+This is a first test to set up a Python application inside a devcontainer. 
 
-# Encountered issues: 
+## Start the API
+
+Run the following command to start the __FastAPI__. 
+
+#### Encountered issues: 
 
 SSH keys were not properly shared with the dev container:
 
