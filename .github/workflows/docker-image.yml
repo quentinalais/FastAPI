@@ -17,6 +17,6 @@ jobs:
     - name: Build the Docker image
       run: docker build . --file Dockerfile --tag image-my-fastapi
     - name: Run the Docker image
-      run: docker run -it -p 80:80 image-my-fastapi
+      run: docker run -p 80:80 image-my-fastapi
 
 
