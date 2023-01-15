@@ -16,7 +16,7 @@ def read_root():
     return "Greeting message !"
 
 
-@app.get("/bonjour")
+@app.get("/bonjourtoutlemonde")
 def bonjour():
     return "bonjour"
 
