@@ -15,5 +15,6 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Build the Docker image
-        run: docker build . --file Dockerfile --tag image-my-fastapi; docker run -it -p 80:80 image-my-fastapi
-        
+        run: docker build . --file Dockerfile --tag image-my-fastapi
+    - name: Run the Docker image
+        run: docker run -it -p 80:80 image-my-fastapi
