@@ -30,7 +30,7 @@ def bonjour():
 def bonjour():
     return "Hello"
 
-@app.get("/new_endpoint5")
+@app.get("/new_endpoint6")
 def bonjour():
     return "Hello"
 
