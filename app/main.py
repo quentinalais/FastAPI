@@ -26,7 +26,7 @@ def bonjour():
 def bonjour():
     return "Hello"
 
-@app.get("/new_endpoint3")
+@app.get("/new_endpoint4")
 def bonjour():
     return "Hello"
 
