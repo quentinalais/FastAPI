@@ -31,13 +31,14 @@ jobs:
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/rasp-fast-app-image:latest
   pull:
+    needs: build
     runs-on: self-hosted
     steps:
       - 
         name: Stop container & Remove Container
         run: |
-          docker stop container_fast
-          docker rm container_fast
+          docker stop fast
+          docker rm fast
       - 
         name: Pull latest image
         run: pull quentin973/rasp-fast-app-image:latest
