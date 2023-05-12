@@ -26,6 +26,10 @@ def bonjour():
 def bonjour():
     return "Hello"
 
+@app.get("/new_endpoint2")
+def bonjour():
+    return "Hello"
+
 @app.get("/items/{item_id}")
 def read_item(item_id: int, q: Union[str, None] = None):
     return {"item_id": item_id, "q": q}
