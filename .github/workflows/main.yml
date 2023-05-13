@@ -3,7 +3,7 @@ name: ci
 on:
   push:
     branches:
-      - "feature/WithoutDevContainer"
+      - "main"
 
 jobs:
   build:
@@ -27,7 +27,7 @@ jobs:
         with:
           context: .
           file: ./Dockerfile
-          platforms: linux/arm/v7
+          platforms: linux/arm/v7,linux/amd64
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/rasp-fast-app-image:latest
   pull:
