@@ -25,8 +25,8 @@ jobs:
         name: Build and push
         uses: docker/build-push-action@v4
         with:
-          context: .
-          file: ./app/Dockerfile
+          context: ./app
+          file: ./Dockerfile
           platforms: linux/arm/v7,linux/amd64
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/rasp-fast-app-image:latest
