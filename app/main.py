@@ -9,6 +9,10 @@ app = FastAPI()
 def read_root():
     return "Hello World"
 
-@app.get("/helo")
+@app.get("/French")
 def read_root():
-    return "Bonjour"
+    return "Bonjour, en francais."
+
+@app.get("/English")
+def read_root():
+    return "Hello, in english."
