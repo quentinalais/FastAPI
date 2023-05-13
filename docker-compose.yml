@@ -1,0 +1,9 @@
+version: "2"
+services:
+  app:
+    container_name: fast
+    build: .
+    volumes:
+      - ./app:/code/app
+    ports:
+      - 80:80
