@@ -16,3 +16,11 @@ def read_root():
 @app.get("/English")
 def read_root():
     return "Hello, in english."
+
+@app.get("/Spanish")
+def read_root():
+    return "Hola, in spanish."
+
+@app.get("/German")
+def read_root():
+    return "Gutte tag, in german."
