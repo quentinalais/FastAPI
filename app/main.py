@@ -1,26 +1,23 @@
-from typing import Union
+from typing import Union, List
 
-from fastapi import FastAPI
+from fastapi import Depends, FastAPI, HTTPException
+from sqlalchemy.orm import Session
+
+import crud, models
+from database import SessionLocal, engine
 
 app = FastAPI()
 
 
-@app.get("/")
-def read_root():
-    return "Hello World"
+# Dependency
+def get_db():
+    db = SessionLocal()
+    try:
+        yield db
+    finally:
+        db.close()
 
-@app.get("/French")
-def read_root():
-    return "Bonjour, en francais."
-
-@app.get("/English")
-def read_root():
-    return "Hello, in english."
-
-@app.get("/Spanish")
-def read_root():
-    return "Hola, in spanish."
-
-@app.get("/German")
-def read_root():
-    return "Gutte tag, in german."
+@app.get("/actors/", )
+def read_users(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
+    users = crud.get_actors(db, skip=skip, limit=limit)
+    return users
