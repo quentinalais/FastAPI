@@ -6,7 +6,7 @@ from sqlalchemy.orm import Session
 import crud, models
 from database import SessionLocal, engine
 
-app = FastAPI()
+app = FastAPI(title="Raspberry PI Hosted Fast API")
 
 
 # Dependency
