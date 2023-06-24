@@ -32,6 +32,6 @@ services:
     environment:
       PGADMIN_DEFAULT_EMAIL: admin@admin.com
       PGADMIN_DEFAULT_PASSWORD: root
-      PGADMIN_LISTEN_PORT: 70
+      PGADMIN_LISTEN_PORT: 5050
     ports:
-      - 70:70
+      - 5050:5050
