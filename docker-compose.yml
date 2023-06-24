@@ -22,8 +22,6 @@ services:
       - 5432
       # Where our data will be persisted
     volumes:
-      - ./db:/var/lib/postgresql/data
-      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
       - ./pg_hba.conf:/etc/postgresql/pg_hba.conf
 
   pgadmin:
