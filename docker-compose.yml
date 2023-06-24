@@ -9,7 +9,6 @@ services:
       - 80:80
   db:
     image: postgres:latest
-    command: postgres -c stats_temp_directory=/tmp
     restart: always
     environment:
       POSTGRES_USER: postgres
