@@ -1,4 +1,3 @@
-USE DB ;
 CREATE TABLE actor (
   actor_id serial NOT NULL,
   first_name varchar(45) NOT NULL,
