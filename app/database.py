@@ -2,13 +2,13 @@ from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 
-DB_USER = 'user'
-DB_PASSWORD = 'password'
-DB_PORT = '3306'
-DB_DATABASE = 'db' # service name 
-DB_HOST = 'db'
+DB_USER = 'postgres'
+DB_PASSWORD = 'postgres'
+DB_PORT = '5432'
+DB_HOST = 'db' # service
+DB_DATABASE = 'DB'
 
-SQLALCHEMY_DATABASE_URL = f'mysql+pymysql://{DB_USER}:{DB_PASSWORD}@{DB_HOST}:{DB_PORT}/{DB_DATABASE}?charset=utf8'
+SQLALCHEMY_DATABASE_URL = f'postgresql://{DB_USER}:{DB_PASSWORD}@{DB_HOST}/{DB_DATABASE}'
 
 engine = create_engine(SQLALCHEMY_DATABASE_URL)
 

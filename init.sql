@@ -1,11 +1,10 @@
 USE DB ;
-CREATE TABLE `actor` (
-  `actor_id` smallint(5) unsigned NOT NULL AUTO_INCREMENT,
-  `first_name` varchar(45) NOT NULL,
-  `last_name` varchar(45) NOT NULL,
-  `last_update` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  PRIMARY KEY (`actor_id`),
-  KEY `idx_actor_last_name` (`last_name`)
+CREATE TABLE actor (
+  actor_id serial NOT NULL,
+  first_name varchar(45) NOT NULL,
+  last_name varchar(45) NOT NULL,
+  last_update TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (actor_id)
 ); 
 
 INSERT INTO actor VALUES (1,'PENELOPE','GUINESS','2006-02-15 04:34:33'),
