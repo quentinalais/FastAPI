@@ -44,4 +44,4 @@ jobs:
         run: docker pull quentin973/rasp-fast-app-image:latest
       - 
         name : Create new container
-        run: docker run -d --name fast -p 80:80 quentin973/rasp-fast-app-image:latest
+        run: docker run -d --restart unless-stopped  --name fast -p 80:80 quentin973/rasp-fast-app-image:latest
