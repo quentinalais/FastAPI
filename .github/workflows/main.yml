@@ -47,4 +47,4 @@ jobs:
         run: pwd
       - 
         name : Create new container
-        run: docker run --env-file ./env -d --restart unless-stopped  --name fast -p 80:80 quentin973/rasp-fast-app-image:latest
+        run: docker run --env-file .env -d --restart unless-stopped  --name fast -p 80:80 quentin973/rasp-fast-app-image:latest
