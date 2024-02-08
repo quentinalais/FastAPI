@@ -13,14 +13,5 @@ Build image with arm:
 ```
 uvicorn main:app --host 0.0.0.0 --port 80
 ```
-#### Encountered issues: 
-
-SSH keys were not properly shared with the dev container:
-
-To fix the issue I had to include the following command in the devcontainer.json
-
-```
-"initializeCommand": "find ~/.ssh/ -type f -exec grep -l 'PRIVATE' {} \\; | xargs ssh-add",
-```
 ### Link 
 https://kingfish-fancy-easily.ngrok-free.app/docs
