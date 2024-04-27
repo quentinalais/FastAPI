@@ -7,13 +7,15 @@ services:
       - ./app:/code
     ports:
       - 80:80
+    depends_on:
+      - DB
     environment:
       DB_USER: ${DB_USER}
       DB_PASSWORD: ${DB_PASSWORD}
       DB_PORT: ${DB_PORT}
       DB_HOST: ${DB_HOST}
       DB_DATABASE: ${DB_DATABASE}
-  db:
+  DB:
     image: postgres:13-alpine
     restart: always
     environment:
@@ -21,10 +23,8 @@ services:
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
       POSTGRES_DB: ${POSTGRES_DB}
     ports:
-      # <Port exposed> : <MySQL Port running inside container>
       - 5432:5432
     expose:
-      # Opens port 3306 on the container
       - 5432
       # Where our data will be persisted
     volumes:
