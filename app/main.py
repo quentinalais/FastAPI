@@ -1,10 +1,13 @@
 from typing import Union, List, Annotated
 import os 
 
-from fastapi import Depends, FastAPI, HTTPException,  File, UploadFile
+from fastapi import Depends, FastAPI, HTTPException,  File, UploadFile, Form
 from sqlalchemy.orm import Session
 from fastapi.encoders import jsonable_encoder
 from fastapi.responses import FileResponse
+import boto3
+
+from fastapi.middleware.cors import CORSMiddleware
 
 import models
 from database import SessionLocal, engine, Base
@@ -12,8 +15,30 @@ from starlette.background import BackgroundTasks
 
 from pydantic import BaseModel
 
+FILEBASE_KEY = os.getenv("FILEBASE_KEY")
+FILEBASE_SECRET = os.getenv("FILEBASE_SECRET")
+
+BUCKET = "patawa-music"
+
+s3 = boto3.client('s3',
+	endpoint_url='https://s3.filebase.com',
+	aws_access_key_id=FILEBASE_KEY,
+	aws_secret_access_key=FILEBASE_SECRET)
 
 app = FastAPI(title="Raspberry PI Hosted Fast API")
+
+origins = [
+    "*"
+]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
 
 Base.metadata.create_all(bind=engine)
 
@@ -34,7 +59,7 @@ def clean_temp_folder():
 @app.get("/tracks/",)
 def get_tracks( db: Session = Depends(get_db)):
     tracks = db.query(models.Tracks).all()
-    result = [ { "filename":track.filename, "ID":track.ID} for track in tracks]
+    result = [ { "filename":track.filename, "ID":track.ID, "CID":track.CID, "ETag":track.ETag } for track in tracks]
     return result
 
 
@@ -52,6 +77,7 @@ async def read_track(track_id:int,background_tasks: BackgroundTasks, db: Session
 async def delete_track(track_id:int, db: Session = Depends(get_db)):
     track = db.query(models.Tracks).filter(models.Tracks.ID==track_id).first()
     filename = track.filename
+    s3.delete_object(Bucket=BUCKET, Key=track.filename)
     db.delete(track)
     db.commit()
     return f"{filename} deleted."
@@ -59,8 +85,24 @@ async def delete_track(track_id:int, db: Session = Depends(get_db)):
 @app.post("/upload_track/")
 async def create_upload_file(file: UploadFile = File(...), db:Session = Depends(get_db)):
     content =  await file.read()
-    new_track = models.Tracks(filename=file.filename, content=content)
+    response = s3.put_object(Body=content, Bucket=BUCKET, Key=file.filename)
+    CID = response["ResponseMetadata"]["HTTPHeaders"]["x-amz-meta-cid"]
+    ETag = response["ETag"]
+    new_track = models.Tracks(filename=file.filename, content=content, CID=CID, ETag=ETag)
     db.add(new_track)
     db.commit()
     db.refresh(new_track)
     return {"filename": file.filename}
+
+
+@app.get("/buckets")
+async def get_buckets():
+    response = s3.list_buckets()
+    return response
+
+@app.get("/files")
+async def get_files():
+    objects = s3.list_objects_v2(Bucket=BUCKET)
+    for element in objects:
+        print(element)
+    return objects

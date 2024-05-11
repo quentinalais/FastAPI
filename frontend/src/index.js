@@ -30,7 +30,7 @@ import RegisterPage from "views/examples/RegisterPage.js";
 import ProfilePage from "views/examples/ProfilePage.js";
 import UploadPage from "views/IndexSections/Download"; 
 import IndexNavbar from "components/Navbars/IndexNavbar.js";
-
+import Music from "views/Music";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
 root.render(
@@ -41,6 +41,8 @@ root.render(
       <Route path="/" element={<Home />} />
       <Route path="/components" element={<Index />} />
       <Route path="/upload" element={<UploadPage />} />
+      <Route path="/music" element={<Music />} />
+
       <Route path="/landing-page" element={<LandingPage />} />
       <Route path="/register-page" element={<RegisterPage />} />
       <Route path="/profile-page" element={<ProfilePage />} />

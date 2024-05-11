@@ -10,4 +10,7 @@ class Tracks(Base):
     ID = Column(Integer, primary_key=True, autoincrement=True)
     filename = Column(String)
     content = Column(LargeBinary)
+    CID = Column(String)
+    ETag = Column(String)
+
 
