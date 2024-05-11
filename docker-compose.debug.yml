@@ -22,6 +22,8 @@ services:
       DB_PORT: ${DB_PORT}
       DB_HOST: ${DB_HOST}
       DB_DATABASE: ${DB_DATABASE}
+      FILEBASE_KEY: ${FILEBASE_KEY}
+      FILEBASE_SECRET: ${FILEBASE_SECRET}
   DB:
     image: postgres:13-alpine
     restart: always
