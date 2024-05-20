@@ -73,4 +73,4 @@ jobs:
 
       - 
         name: Frontend Create new container
-        run: docker run --name react -p 80:80  quentin973/frontend
+        run: docker run -d --name react -p 80:80  quentin973/frontend

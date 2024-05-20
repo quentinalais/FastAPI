@@ -41,7 +41,7 @@ export default function Download() {
     setLoading(true)
     try {
       
-      const endpoint = `${process.env.REACT_APP_API_HOST}/upload_track/`
+      const endpoint = "http://localhost:8000/upload_track/"
       const response = await axios.post(endpoint, formData, {
         headers: {
           'Content-Type': 'multipart/form-data'
