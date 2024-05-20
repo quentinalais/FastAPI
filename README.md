@@ -38,4 +38,4 @@ To get started with the Tracks API, follow these steps:
 Contributions to the Tracks API project are welcome! If you find any issues or have suggestions for improvements, please open an issue or submit a pull request.
 
 ### Link 
-https://kingfish-fancy-easily.ngrok-free.app/docs
+https://kingfish-fancy-easily.ngrok-free.app
