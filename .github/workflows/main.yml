@@ -40,6 +40,8 @@ jobs:
           platforms: linux/arm/v7
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/frontend:latest
+          secrets: |
+            "REACT_APP_API_HOST=${{ secrets.REACT_APP_API_HOST}}"
 
   pull:
     needs: build
