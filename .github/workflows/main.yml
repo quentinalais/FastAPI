@@ -38,7 +38,7 @@ jobs:
           context: "{{defaultContext}}:frontend"
           file: ./Dockerfile
           platforms: linux/arm/v7
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/rasp-react-app-image:latest
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/frontend:latest
 
   pull:
     needs: build
