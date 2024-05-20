@@ -38,6 +38,7 @@ jobs:
           context: "{{defaultContext}}:frontend"
           file: ./Dockerfile
           platforms: linux/arm/v7
+          push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/frontend:latest
 
   pull:
