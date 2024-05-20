@@ -53,6 +53,9 @@
     "sass": "1.62.1",
     "web-vitals": "3.3.1"
   },
+  "devDependencies": {
+    "@babel/plugin-proposal-private-property-in-object":">=7.21.0"
+  },
   "peerDependencies": {
     "react": ">=16.8.0",
     "react-dom": ">=16.8.0"
@@ -62,7 +65,7 @@
     "typescript": "5.0.4"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "NODE_ENV=development runtime-env-cra --config-name=./public/runtime-env.js && react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
