@@ -30,6 +30,16 @@ jobs:
           platforms: linux/arm/v7,linux/amd64
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/rasp-fast-app-image:latest
+
+      - 
+        name: Frontend Build and Push
+        uses: docker/build-push-action@v4
+        with:
+          context: "{{defaultContext}}:frontend"
+          file: ./Dockerfile
+          platforms: linux/arm/v7,linux/amd64
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/rasp-react-app-image:latest
+
   pull:
     needs: build
     runs-on: self-hosted
@@ -40,11 +50,13 @@ jobs:
           docker stop fast
           docker rm fast
       - 
-        name: Pull latest image
+        name: Fast API Pull latest image
         run: docker pull quentin973/rasp-fast-app-image:latest
-      - 
-        name: echo
-        run: pwd
+  
       - 
         name : Create new container
         run: docker run --env-file .env -d --restart unless-stopped  --name fast -p 80:80 quentin973/rasp-fast-app-image:latest
+
+      - 
+        name: Frontend Pull latest image
+        run: docker pull quentin973/rasp-react-app-image:latest
