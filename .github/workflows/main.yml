@@ -55,8 +55,8 @@ jobs:
   
       - 
         name : Create new container
-        run: docker run --env-file .env -d --restart unless-stopped  --name fast -p 80:80 quentin973/rasp-fast-app-image:latest
+        run: docker run --env-file .env -d --restart unless-stopped  --name fast -p 8000:8000 quentin973/rasp-fast-app-image:latest
 
       - 
         name: Frontend Pull latest image
-        run: docker pull quentin973/rasp-react-app-image:latest
+        run: docker pull quentin973/frontend:latest
