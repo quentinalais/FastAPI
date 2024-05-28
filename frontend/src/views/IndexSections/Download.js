@@ -41,7 +41,7 @@ export default function Download() {
     setLoading(true)
     try {
       
-      const endpoint = "http://localhost:8000/upload_track/"
+      const endpoint = "https://9ae9255d6a9ae9d9.p51.rt3.io/upload_track/"
       const response = await axios.post(endpoint, formData, {
         headers: {
           'Content-Type': 'multipart/form-data'

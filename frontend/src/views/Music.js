@@ -12,7 +12,7 @@ export default function Music() {
   const [data, setdata] = useState(null);
 
   useEffect(() => {
-    axios.get("http://localhost:8000/tracks/").then(resp=>{
+    axios.get("https://9ae9255d6a9ae9d9.p51.rt3.io/tracks/").then(resp=>{
       setdata(resp.data)
     })
 
@@ -20,7 +20,7 @@ export default function Music() {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`http://localhost:8000/track/${id}`); 
+      await axios.delete(`https://9ae9255d6a9ae9d9.p51.rt3.io/track/${id}`); 
       setdata(data.filter(item => item.ID !== id)); // Update state to remove the deleted item
     } catch (error) {
       console.error('Error deleting item:', error);
