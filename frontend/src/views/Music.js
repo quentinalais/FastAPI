@@ -27,9 +27,11 @@ export default function Music() {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`https://9ae9255d6a9ae9d9.p51.rt3.io/track/${id}`,{
+      await axios.delete(`https://raspberrypi-fastapi.at.remote.it:33000/track/${id}`,{
         headers: {
-          "Access-Control-Allow-Origin": "*",
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Methods': 'GET,POST,PUT,DELETE,OPTIONS',
+        'Access-Control-Allow-Headers': 'Origin',
         },
       }); 
       setdata(data.filter(item => item.ID !== id)); // Update state to remove the deleted item
@@ -81,12 +83,10 @@ const TableMusic = ({data, handleDelete})=>{
         <Table responsive>
     <thead>
         <tr>
-            
             <th className="text-center">ID</th>
             <th>Track Name</th>
             <th>CID</th>
             <th> Action </th>
-           
         </tr>
     </thead>
     <tbody>
@@ -107,9 +107,6 @@ const TableMusic = ({data, handleDelete})=>{
                 </tr>
             ))
         }
-       
-        
-        
     </tbody>
 </Table>
     )
