@@ -41,10 +41,11 @@ export default function Download() {
     setLoading(true)
     try {
       
-      const endpoint = "https://9ae9255d6a9ae9d9.p51.rt3.io/upload_track/"
+      const endpoint = "https://raspberrypi-fastapi.at.remote.it:33000/upload_track/"
       const response = await axios.post(endpoint, formData, {
         headers: {
-          'Content-Type': 'multipart/form-data'
+          'Content-Type': 'multipart/form-data',
+          "Access-Control-Allow-Origin": "*",
         },
         // Adding event listener to track upload progress
         onUploadProgress: (progressEvent) => {
