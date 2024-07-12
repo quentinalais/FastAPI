@@ -28,8 +28,8 @@ s3 = boto3.client('s3',
 app = FastAPI(title="Raspberry PI Hosted Fast API")
 
 origins = [
-    "https://raspberrypi-fastapi.at.remote.it:33000",
-    "https://raspberrypi-react.at.remote.it:33001"
+    "https://fastapi-j672.onrender.com",
+    "https://patawa-music.netlify.app"
 ]
 
 app.add_middleware(
