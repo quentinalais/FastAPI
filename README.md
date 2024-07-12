@@ -2,6 +2,8 @@
 
 Welcome to the Tracks API project! This project provides an API for managing tracks.
 
+https://patawa-music.netlify.app
+
 ## Docker Compose Files
 
 This project includes two Docker Compose files:
@@ -41,8 +43,8 @@ To get started with the Tracks API, follow these steps:
     ```sh
     docker-compose up -f <chosen_docker_compose_file>
     ```
-4. **Access the API endpoints** at the specified ports.
 
 ## Contributing
 
 Contributions to the Tracks API project are welcome! If you find any issues or have suggestions for improvements, please open an issue or submit a pull request.
+
