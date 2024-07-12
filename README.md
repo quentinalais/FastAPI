@@ -1,4 +1,4 @@
-# Patawa Music APP
+# Patawa Music
 
 Welcome to the Patawa Music project! This project provides an API for managing tracks.
 
