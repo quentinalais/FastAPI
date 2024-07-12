@@ -1,8 +1,11 @@
-# Tracks API
+# Patawa Music APP
 
-Welcome to the Tracks API project! This project provides an API for managing tracks.
+Welcome to the Patawa Music project! This project provides an API for managing tracks.
 
 https://patawa-music.netlify.app
+
+<img width="1137" alt="Capture d’écran 2024-07-12 à 23 03 25" src="https://github.com/user-attachments/assets/0a8c8a5e-1590-480d-b276-0a14b1f90945">
+
 
 ## Docker Compose Files
 
