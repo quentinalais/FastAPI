@@ -12,7 +12,7 @@ export default function Music() {
   const [data, setdata] = useState(null);
 
   useEffect(() => {
-    axios.get("https://raspberrypi-fastapi.at.remote.it:33000/tracks/",{
+    axios.get("https://fastapi-j672.onrender.com/tracks/",{
       withCredentials: true,
       headers: {
         'Access-Control-Allow-Origin': '*',
@@ -27,7 +27,7 @@ export default function Music() {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`https://raspberrypi-fastapi.at.remote.it:33000/track/${id}`,{
+      await axios.delete(`https://fastapi-j672.onrender.com/track/${id}`,{
         headers: {
         'Access-Control-Allow-Origin': '*',
         'Access-Control-Allow-Methods': 'GET,POST,PUT,DELETE,OPTIONS',
