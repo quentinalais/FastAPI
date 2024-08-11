@@ -17,6 +17,7 @@ from pydantic import BaseModel
 
 FILEBASE_KEY = os.getenv("FILEBASE_KEY")
 FILEBASE_SECRET = os.getenv("FILEBASE_SECRET")
+FRONT = os.getenv("FRONTEND")
 
 BUCKET = "patawa-music"
 
@@ -28,8 +29,7 @@ s3 = boto3.client('s3',
 app = FastAPI(title="Raspberry PI Hosted Fast API")
 
 origins = [
-    "https://fastapi-j672.onrender.com",
-    "http://localhost:3000"
+    FRONT
 ]
 
 app.add_middleware(
