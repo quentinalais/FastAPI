@@ -42,6 +42,7 @@ jobs:
         run: |
           docker stop fast
           docker rm fast
+        continue-on-error: true
 
       - 
         name: Fast API Pull latest image
@@ -49,4 +50,4 @@ jobs:
   
       - 
         name : Create new container
-        run: docker run --env-file .env -d --restart unless-stopped  --name fast -p 8000:8000 quentin973/rasp-fast-app-image:latest
+        run:  cd /Work/FastAPI/app && docker run --env-file .env -d --restart unless-stopped  --name fast -p 8000:8000 quentin973/rasp-fast-app-image:latest
