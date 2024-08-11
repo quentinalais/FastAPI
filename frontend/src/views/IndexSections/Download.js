@@ -23,6 +23,9 @@ import axios from 'axios';
 
 import { Blocks } from "react-loader-spinner";
 
+const API = process.env.REACT_APP_API_HOST
+
+
 export default function Download() {
   const [file, setFile] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -41,7 +44,7 @@ export default function Download() {
     setLoading(true)
     try {
       
-      const endpoint = "https://fastapi-j672.onrender.com/upload_track/"
+      const endpoint = `${API}/upload_track/`
       const response = await axios.post(endpoint, formData, {
         headers: {
           'Content-Type': 'multipart/form-data',

@@ -8,11 +8,13 @@ import { Circles } from "react-loader-spinner";
 import AudioPlayer from "react-h5-audio-player";
 import "react-h5-audio-player/lib/styles.css";
 
+const API = process.env.REACT_APP_API_HOST
+
 export default function Music() {
   const [data, setdata] = useState(null);
 
   useEffect(() => {
-    axios.get("https://fastapi-j672.onrender.com/tracks/",{
+    axios.get(`${API}/tracks/`,{
       withCredentials: true,
       headers: {
         'Access-Control-Allow-Origin': '*',
@@ -27,7 +29,7 @@ export default function Music() {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`https://fastapi-j672.onrender.com/track/${id}`,{
+      await axios.delete(`${API}/track/${id}`,{
         headers: {
         'Access-Control-Allow-Origin': '*',
         'Access-Control-Allow-Methods': 'GET,POST,PUT,DELETE,OPTIONS',

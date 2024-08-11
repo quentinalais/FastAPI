@@ -29,7 +29,7 @@ app = FastAPI(title="Raspberry PI Hosted Fast API")
 
 origins = [
     "https://fastapi-j672.onrender.com",
-    "https://patawa-music.netlify.app"
+    "http://localhost:3000"
 ]
 
 app.add_middleware(
