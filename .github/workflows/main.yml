@@ -28,7 +28,7 @@ jobs:
         with:
           context: "{{defaultContext}}:app"
           file: ./Dockerfile
-          platforms: linux/arm/v7,linux/amd64
+          platforms: linux/arm/v7
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/rasp-fast-app-image:latest
 
@@ -50,4 +50,9 @@ jobs:
   
       - 
         name : Create new container
-        run:  cd /Work/FastAPI/app && docker run --env-file .env -d --restart unless-stopped  --name fast -p 8000:8000 quentin973/rasp-fast-app-image:latest
+        run:  cd Work/FastAPI && docker run --env-file .env -d --restart unless-stopped  --name fast -p 8000:8000 quentin973/rasp-fast-app-image:latest
+
+      - 
+        name : Build Frontend
+        run: cd Work/FastAPI/frontend && sudo npm run build
+
