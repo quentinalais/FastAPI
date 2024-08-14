@@ -54,9 +54,9 @@ jobs:
   
       - 
         name : Create new container
-        run:  cd Work/FastAPI && docker run --env-file .env -d --restart unless-stopped  --name fast -p 8000:8000 quentin973/rasp-fast-app-image:latest
+        run:  cd /home/quentinalais/Work/FastAPI && docker run --env-file .env -d --restart unless-stopped  --name fast -p 8000:8000 quentin973/rasp-fast-app-image:latest
 
       - 
         name : Build Frontend
-        run: cd Work/FastAPI/frontend && sudo npm run build
+        run: cd /home/quentinalais/Work/FastAPI/frontend && sudo npm run build
 
