@@ -47,6 +47,10 @@ jobs:
       - 
         name: Fast API Pull latest image
         run: docker pull quentin973/rasp-fast-app-image:latest
+
+      - 
+        name: Print current directory
+        run: pwd
   
       - 
         name : Create new container
