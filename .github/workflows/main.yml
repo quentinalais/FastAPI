@@ -72,5 +72,5 @@ jobs:
 
       - 
         name : Build Frontend
-        run: #cd /home/quentinalais/Work/FastAPI/frontend && sudo npm run build
+        run: pwd #cd /home/quentinalais/Work/FastAPI/frontend && sudo npm run build
 
