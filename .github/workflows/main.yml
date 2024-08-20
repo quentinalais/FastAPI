@@ -32,6 +32,16 @@ jobs:
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/rasp-fast-app-image:latest
 
+      -
+        name: Frontend Build and push
+        uses: docker/build-push-action@v4
+        with:
+          context: "{{defaultContext}}:frontend"
+          file: ./Dockerfile
+          platforms: linux/arm/v7
+          push: true
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/rasp-react-app-image:latest
+
 
   pull:
     needs: build
@@ -49,6 +59,10 @@ jobs:
         run: docker pull quentin973/rasp-fast-app-image:latest
 
       - 
+        name: React Pull latest image
+        run: docker pull quentin973/rasp-react-app-image:latest
+
+      - 
         name: Print current directory
         run: pwd
   
@@ -58,5 +72,5 @@ jobs:
 
       - 
         name : Build Frontend
-        run: cd /home/quentinalais/Work/FastAPI/frontend && sudo npm run build
+        run: #cd /home/quentinalais/Work/FastAPI/frontend && sudo npm run build
 
