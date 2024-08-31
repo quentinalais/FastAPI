@@ -48,10 +48,17 @@ jobs:
     runs-on: self-hosted
     steps:
       - 
-        name: Stop container & Remove Container
+        name: Fast - Stop container & Remove Container
         run: |
           docker stop fast
           docker rm fast
+        continue-on-error: true
+      
+      - 
+        name: React - Stop container & Remove Container
+        run: |
+          docker stop patawamusic_frontend
+          docker rm patawamusic_frontend
         continue-on-error: true
 
       - 
@@ -61,16 +68,12 @@ jobs:
       - 
         name: React Pull latest image
         run: docker pull quentin973/rasp-react-app-image:latest
-
-      - 
-        name: Print current directory
-        run: pwd
   
       - 
         name : Create new container
         run:  cd /home/quentinalais/Work/FastAPI && docker run --env-file .env -d --restart unless-stopped  --name fast -p 8000:8000 quentin973/rasp-fast-app-image:latest
 
       - 
-        name : Build Frontend
-        run: pwd #cd /home/quentinalais/Work/FastAPI/frontend && sudo npm run build
+        name : Run FrontEnd
+        run: docker run -d --restart unless-stopped  -p 80:80 --name patawamusic_frontend my-react-app 
 

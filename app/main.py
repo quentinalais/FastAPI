@@ -29,9 +29,8 @@ s3 = boto3.client('s3',
 app = FastAPI(title="Raspberry PI Hosted Fast API")
 
 origins = [
-    FRONT
+    "http://localhost:3000"
 ]
-
 
 app.add_middleware(
     CORSMiddleware,
